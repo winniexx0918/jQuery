@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Tree</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        td {
+            transition: .5s;
+        }
+
+        .box {
+            width: 20px;
+            height: 20px;
+            background: lightcoral;
+            margin: 5px;
+            transition: .5s;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+    <script>
+        $(document).ready(function () {
+
+        });
+
+        $(function () {
+            // $("td").click(function(){
+            //     // $("td").css("background", "pink")
+            //     $(this).css("background", "pink")
+            // })
+            $(".box").click(function (e) {
+                e.stopPropagation();
+                // $(this).css("background", "lightblue")
+                $(this).parent().css("background", "#ddd")
+            })
+            $("td").click(function () {
+                // $(this).children(".box").css("background", "red")
+                // $(this).find(".box").css("background", "red").css("border-radius", "50%");
+
+                //next往後選
+                // $(this).next().css("background", "pink")
+                // $(this).nextAll().css("background", "pink")
+                // $(this).nextUntil(".stop").css("background", "pink")
+
+                //prev往前選
+                // $(this).prev().css("background", "pink")
+                //$(this).prevAll().css("background", "pink")
+                // $(this).prevUntil(".stop").css("background", "pink")
+
+                // $(this).css("background","none")
+                // .siblings().css("background","lightblue")
+
+                $(this).css("background","transparent")
+                    .next().css("background", "pink")
+                    .end().prev().css("background", "pink")
+
+
+            });
+
+            $()
+
+            $(":checkbox").click(function () {
+                $(this).next().css("background", "lightblue")
+                $(this).prev().css("background", "green")
+
+            });
+
+        })
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <table class="table table-bordered">
+            <tr>
+                <td>
+                    <div>
+                        <div class="box"></div>
+                        <div class="box"></div>
+                        <div class="box"></div>
+                    </div>
+                </td>
+                <td></td>
+                <td></td>
+                <td class="stop"></td>
+                <td>
+                    <div>
+                        <div class="box"></div>
+                        <div class="box"></div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="box"></div>
+                </td>
+                <td></td>
+                <td>
+                    <div class="box"></div>
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+        <div class="py-2">
+            <input type="checkbox"> <span>yes</span>
+        </div>
+        <div class="py-2">
+            <span>no</span>
+            <input type="checkbox">
+        </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+</body>
+
+</html>
