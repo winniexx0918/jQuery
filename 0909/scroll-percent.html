@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+            body{
+                height: 300vh;
+                background: lightskyblue;
+            }
+
+            .read_progress{
+                position: fixed;
+                left: 0;
+                right: 0;
+                top: 0;
+                height: 50px;
+                background: rgba(255, 240, 245, 0.424);
+            }
+            .read_progress_bar{
+                height: 50px;
+                background: lightyellow;
+                position: fixed;
+                width: 0; 
+                
+                
+            }
+            .text{
+                position: fixed;
+                top:30%;
+                left: 40%;
+                width: 300px;
+                height: 300px;
+                background: lightslategrey;
+                font-size: 120px;
+                color: aliceblue;
+                border-radius: 50%;
+            }
+        
+
+        </style>
+  </head>
+  <body>
+      <div class="read_progress">
+          <div class="read_progress_bar"></div>
+          <h4 class="text  d-flex align-items-center justify-content-center">0%</h4>
+      </div>
+      
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+    <script>
+        var pageHeight = $("body").height();
+        // console.log("page hight:"+pageHeight);
+        // innerHtml = ("page hight:"+pageHeight);
+        
+
+        var windowHight = $(window).height();
+
+    $(window).scroll(function(){
+        let scrollTop = $(this).scrollTop();
+        let scrollPercent = Math.round((scrollTop/(pageHeight-windowHight))*100)+"%";
+        console.log(scrollPercent);
+        //卷軸百分比 = (卷軸頂端 / 頁面高度 - window高度))*100+"%"
+        
+        //$(".read_progress_bar").css("width",scrollPercent)
+        //可以換以下寫法
+        $(".read_progress_bar").width(scrollPercent);
+        $("h4").text(scrollPercent);
+
+    })
+    
+    
+    </script>
+
+
+  </body>
+</html>
