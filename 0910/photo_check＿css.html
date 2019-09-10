@@ -18,6 +18,14 @@ figure{
   border: 2px solid transparent;
   margin: 4px;
 }
+figure.active{
+  border: 2px solid lightseagreen;
+  border-radius: 50%;
+  transition: .5s;
+  transform: rotate(360deg);
+  width: 50%;
+  margin: 20px;
+}
 figure img{
   width: 100%;
 }
@@ -72,14 +80,11 @@ figure img{
   </script>
   <script>
        $("figure").click(function(){
-            $(this).css("border", "2px solid red")
-            .siblings().css("border", "2px solid transparent")
+         $(this).addClass("active")
+         .siblings().removeClass("active")
 
-            // $(this).css("border", "2px solid transparent")
-            // .next().css("border", "2px solid red")
-            // .end().prev().css("border", "2px solid red")
-
-
+            // $(this).css("border", "2px solid red")
+            // .siblings().css("border", "2px solid yellow")
         });
 
   </script>
