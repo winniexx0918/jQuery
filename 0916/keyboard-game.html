@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cat Walk</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+  <style>
+    .map{
+      position: relative;
+      width:640px;
+      height:480px;
+      margin: 20px auto;
+      background: url(../images/map.png);
+    }
+    .cat{
+      position: absolute;
+      left:0;
+      top:0;
+      width:184px;   
+      height:200px;   
+      margin:2% auto;   
+      background: url(../images/cat.png) left top;  
+    }  
+    @keyframes play {  
+       100% { background-position: -1658px; }   
+    }
+    .cat{   
+        animation: play .8s steps(9) infinite;   
+        -webkit-animation: play .8s steps(9) infinite;   
+        transform: scale(.4);
+        transform-origin: left top;
+    }
+  </style>
+</head>
+<body>
+  <div class="map">
+    <div class="cat"></div>
+  </div><!-- map -->
+  <script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+  <script>
+     let speed=20;
+    $("body").keydown(function(e){
+      let keycode=e.which;
+      console.log(keycode)
+      switch(keycode){
+                case 87:
+                $(".cat").css("top", "-="+speed+"px");
+                    break;
+                case 83:
+                $(".cat").css("top", "+="+speed+"px");
+                    break;
+                case 65:
+                $(".cat").css("left", "-="+speed+"px");
+                break;
+                case 68:
+                $(".cat").css("left", "+="+speed+"px");
+            }
+    });
+    
+  </script>
+</body>
+</html>

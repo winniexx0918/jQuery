@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cart</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <style>
+        .wrapper {
+            max-width: 640px;
+            margin: 40px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper ">
+        <table class="table table-bordered table-sm">
+            <thead>
+                <tr>
+                    <th>品名</th>
+                    <th>單價</th>
+                    <th width="200px">數量</th>
+                    <th>總價</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>蘋果</td>
+                    <td class="price">20</td>
+                    <td>
+                        <input type="number" class="form-control number" value="2">
+                    </td>
+                    <td>
+                        <span class="text-right s_price"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>香蕉</td>
+                    <td class="price">16</td>
+                    <td>
+                        <input type="number" class="form-control number" value="6">
+                    </td>
+                    <td>
+                        <span class="text-right s_price"></span>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="4" class="text-right">
+                        總價:
+                        <span id="total">0</span>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <!-- container -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+
+    <script>
+        $(".number").on("change keyup", function(){
+            let productRow=$(this).closest("tr");
+            let amount=$(this).val();
+            let price=productRow.find(".price").text();
+            let s_price=amount * price;
+            let total = 0;
+            productRow.find(".s_price").text(s_price);
+            
+            $(".s_price").each(function(){
+                total += Number($(this).text());
+            })
+            $("#total").text(total);
+        });
+    </script>
+</body>
+
+</html>

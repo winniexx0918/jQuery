@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <div class="py-2">
+            <div class="text-center" id="show">
+                顯示經緯度
+            </div>
+        </div>
+        <div class="row" id="schoolList">
+            <!-- <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5></h5>
+                        <button type="button" class="btn btn-primary">get geolocation</button>
+
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+    <script>
+        let schools = [{
+            "school_id": "120",
+            "name": "\u516b\u6597\u9ad8\u4e2d",
+            "name_origin": "\u516b\u6597\u9ad8\u4e2d",
+            "name_en": "Keelung Municipal Badou Senior High School",
+            "location": "keelung",
+            "code": "bdjh",
+            "lng": "121.788292",
+            "lat": "25.140237",
+            "closed": "0",
+            "s_show": "1",
+            "picture_id": "1497",
+            "id": "1497",
+            "school_pic": "b00.jpg"
+        }, {
+            "school_id": "122",
+            "name": "\u57fa\u9686\u4e2d\u5c71\u9ad8\u4e2d",
+            "name_origin": "\u57fa\u9686\u4e2d\u5c71\u9ad8\u4e2d",
+            "name_en": "Keelung Municipal Jhong Shan Senior High School",
+            "location": "keelung",
+            "code": "csjh",
+            "lng": "121.731101",
+            "lat": "25.153878",
+            "closed": "0",
+            "s_show": "1",
+            "picture_id": "47040",
+            "id": "47040",
+            "school_pic": "15061469491_2_thumb.jpg"
+        }, {
+            "school_id": "81",
+            "name": "\u57fa\u9686\u5546\u5de5",
+            "name_origin": "\u57fa\u9686\u5546\u5de5",
+            "name_en": "National Keelung Commercial & Industrial Vocational Senior High School",
+            "location": "keelung",
+            "code": "klcivs",
+            "lng": "121.7163563",
+            "lat": "25.0943276",
+            "closed": "0",
+            "s_show": "1",
+            "picture_id": "8448",
+            "id": "8448",
+            "school_pic": "7ac74a6d59176be2a472d367fe15f6ab.jpg"
+        }, {
+            "school_id": "13",
+            "name": "\u57fa\u9686\u5973\u4e2d",
+            "name_origin": "\u57fa\u9686\u5973\u4e2d",
+            "name_en": "National Keelung Girls' Senior High School",
+            "location": "keelung",
+            "code": "klgsh",
+            "lng": "121.7590489",
+            "lat": "25.1286878",
+            "closed": "0",
+            "s_show": "1",
+            "picture_id": "1842",
+            "id": "1842",
+            "school_pic": "1536f84f170a93.jpg"
+        }, {
+            "school_id": "49",
+            "name": "\u57fa\u9686\u6d77\u4e8b",
+            "name_origin": "\u57fa\u9686\u6d77\u4e8b",
+            "name_en": "National Keelung Maritime Vocational High School",
+            "location": "keelung",
+            "code": "klvs",
+            "lng": "121.7719443",
+            "lat": "25.1475309",
+            "closed": "0",
+            "s_show": "1",
+            "picture_id": "4746",
+            "id": "4746",
+            "school_pic": "b019.jpg"
+        }, {
+            "school_id": "494",
+            "name": "\u57fa\u9686\u9ad8\u4e2d",
+            "name_origin": "\u57fa\u9686\u9ad8\u4e2d",
+            "name_en": "National Keelung High School",
+            "location": "keelung",
+            "code": "klsh",
+            "lng": "121.73290599999996",
+            "lat": "25.107671",
+            "closed": "0",
+            "s_show": "1",
+            "picture_id": "3255",
+            "id": "3255",
+            "school_pic": "004.jpg"
+        }, {
+            "school_id": "123",
+            "name": "\u5b89\u6a02\u9ad8\u4e2d",
+            "name_origin": "\u5b89\u6a02\u9ad8\u4e2d",
+            "name_en": "Keelung Municipal Anle Senior High School",
+            "location": "keelung",
+            "code": "aljh",
+            "lng": "121.7299368",
+            "lat": "25.1352763",
+            "closed": "0",
+            "s_show": "1",
+            "picture_id": "5739",
+            "id": "5739",
+            "school_pic": "b11159413_1084684548212497_1555419708_o.jpg"
+        }, {
+            "school_id": "77",
+            "name": "\u6696\u6696\u9ad8\u4e2d",
+            "name_origin": "\u6696\u6696\u9ad8\u4e2d",
+            "name_en": "Keelung Municipal NuanNuan Senior High School",
+            "location": "keelung",
+            "code": "nnjh",
+            "lng": "121.7377091",
+            "lat": "25.1075999",
+            "closed": "0",
+            "s_show": "1",
+            "picture_id": "4545",
+            "id": "4545",
+            "school_pic": "10914965_802509446496588_57514893423248350_o.jpg"
+        }, {
+            "school_id": "124",
+            "name": "\u79c1\u7acb\u4e8c\u4fe1\u9ad8\u4e2d",
+            "name_origin": "\u79c1\u7acb\u4e8c\u4fe1\u9ad8\u4e2d",
+            "name_en": "Erh Shing Senior High School",
+            "location": "keelung",
+            "code": "essh",
+            "lng": "121.7717391",
+            "lat": "25.1434444",
+            "closed": "0",
+            "s_show": "1",
+            "picture_id": "8449",
+            "id": "8449",
+            "school_pic": "936444fb027b76680ab1b33a57201181.jpg"
+        }, {
+            "school_id": "30",
+            "name": "\u79c1\u7acb\u5149\u9686\u5bb6\u5546",
+            "name_origin": "\u79c1\u7acb\u5149\u9686\u5bb6\u5546",
+            "name_en": "Kuang Lung Vocational High School of Home Economics and Commerce",
+            "location": "keelung",
+            "code": "klhcvs",
+            "lng": "121.749759",
+            "lat": "25.129899",
+            "closed": "0",
+            "s_show": "1",
+            "picture_id": "2597",
+            "id": "2597",
+            "school_pic": "006.jpg"
+        }, {
+            "school_id": "125",
+            "name": "\u79c1\u7acb\u57f9\u5fb7\u5de5\u5bb6",
+            "name_origin": "\u79c1\u7acb\u57f9\u5fb7\u5de5\u5bb6",
+            "name_en": "Pei Teh Industrial and Home Economics Vocational High School",
+            "location": "keelung",
+            "code": "ptvs",
+            "lng": "121.7712587",
+            "lat": "25.1298631",
+            "closed": "0",
+            "s_show": "1",
+            "picture_id": "3175",
+            "id": "3175",
+            "school_pic": "1410106387176_mr1410106802866.jpg"
+        }, {
+            "school_id": "121",
+            "name": "\u8f14\u5927\u8056\u5fc3\u9ad8\u4e2d",
+            "name_origin": "\u8f14\u5927\u8056\u5fc3\u9ad8\u4e2d",
+            "name_en": "Keelung Fu Jen Sacred Heart Senior High School",
+            "location": "keelung",
+            "code": "shsh",
+            "lng": "121.7337675",
+            "lat": "25.1353231",
+            "closed": "0",
+            "s_show": "1",
+            "picture_id": "2368",
+            "id": "2368",
+            "school_pic": "b_MG_1028-1.jpg"
+        }]
+
+        // console.log(schools)
+
+        // for(i=0; i<schools.length; i++){
+        //     console.log(schools[i]["location"]);
+        // }
+            let schoolContent ="";
+        schools.forEach(function (school) {
+            // console.log(school.school_id)
+            let schoolData = `<div class="col-md-4 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5>${school.name}</h5>
+                    <button type="button" class="btn btn-info btn-geo" data-lat="${school.lat}" data-lng="${school.lng}">get geolocation</button>
+                </div>
+            </div>
+        </div>`;
+            schoolContent += schoolData;
+        });
+        $("#schoolList").prepend(schoolContent);
+
+        $(".btn-geo").click(function () {
+            let lat = $(this).data("lat")
+            let lng = $(this).data("lng")
+            $("#show").text(`經緯度:${lat}, ${lng}`);
+        });
+    </script>
+
+</body>
+
+</html>

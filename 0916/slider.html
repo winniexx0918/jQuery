@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Title</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="../css/all.min.css">
+  <style>
+    .wrapper {
+      width: 800px;
+      height: 300px;
+      background: #000;
+      margin: 0 auto;
+      overflow: hidden;
+      /* position: relative; */
+    }
+
+    .slider-container {
+      width: 3200px;
+      /* position: absolute; */
+      left: 0px;
+      transition: .5s;
+    }
+
+    .slider-container li {
+      height: 300px;
+      flex: 1 0 0;
+    }
+
+    .slider-container li img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+
+    }
+
+    .slider-dot {
+      bottom: 10px;
+      width: 100%;
+
+    }
+
+    .slider-dot li {
+      width: 15px;
+      height: 15px;
+      border: 1px solid #fff;
+      margin: 0 10px;
+      border-radius: 50%;
+    }
+
+    .slide_btn {
+      top: 0;
+      bottom: 0;
+      width: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .prev_slide {
+      left: 0;
+    }
+
+    .next_slide {
+      right: 0;
+    }
+
+    .slide_btn i {
+      color: rgb(255, 255, 255, 0.8);
+      font-size: 30px;
+    }
+
+    .slide_btn:hover i {
+      color: rgb(255, 255, 255, 0.6);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="wrapper position-relative">
+    <ul id="slider-container" class="list-unstyled slider-container d-flex position-absolute">
+      <!-- <li>
+        <img src="../images/slide1.jpeg" alt="">
+      </li>
+      <li>
+        <img src="../images/slide2.jpeg" alt="">
+      </li>
+      <li>
+        <img src="../images/slide3.jpeg" alt="">
+      </li> -->
+      <!-- <li>
+        <img src="images/slide4.jpeg" alt="">
+      </li> -->
+    </ul>
+    <ul id="slider-dot" class="list-unstyled slider-dot position-absolute d-flex justify-content-center m-0">
+      <!-- <li id="li-1"></li>
+      <li id="li-2"></li>
+      <li id="li-3"></li> -->
+      <!-- <li id="li-4"></li> -->
+    </ul>
+    <div id="prev_slide" class="slide_btn prev_slide position-absolute">
+      <i class="fas fa-caret-left"></i>
+    </div>
+    <div id="next_slide" class="slide_btn next_slide position-absolute">
+      <i class="fas fa-caret-right"></i>
+    </div>
+
+  </div>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+  </script>
+
+  <script>
+    let sliderWidth = 800;
+    let sliderNum = 0;
+    let sliderPictures = ["slide1.jpeg", "slide2.jpeg", "slide3.jpeg", "slide4.jpeg"];
+    // let slideCount=$("#slider-container li").length;
+    let sliderCount = sliderPictures.length;
+
+    sliderPictures.forEach(function (slide) {
+      let sliderContent = `<li><img src="../images/${slide}" alt=""></li>`;
+      $("#slider-container").append(sliderContent);
+      $("#slider-dot").append(`<li></li>`);
+    });
+
+    $("#slider-container").css("width", sliderCount * sliderWidth)
+    // $("#slider-dot li").eq(2).css("background", "#fff")
+    $("#slider-dot li").eq(0).css("background", "none")
+    $("#slider-dot li").hover(function () {
+      sliderNum = $(this).index();
+      console.log(sliderNum)
+      sliderGo()
+      // $(this).css("background", "#fff").siblings().css("background", "none")
+      // $("#slider-container").css("left", 0-slideNum*slideWidth)
+      // console.log("hover")
+    })
+
+
+    $("#prev_slide").click(function () {
+      sliderNum--;
+      if (sliderNum < 0) sliderNum = sliderCount - 1;
+
+      // console.log("prev")
+      // $("#slider-dot li").eq(slideNum).css("background", "#fff").siblings().css("background", "none")
+      // $("#slider-container").css("left", 0-slideNum*slideWidth)
+      sliderGo()
+    })
+    $("#next_slide").click(function () {
+      sliderNum++;
+      if (sliderNum > (sliderCount - 1)) sliderNum = 0;
+      console.log(sliderNum)
+      sliderGo()
+    })
+
+    function sliderGo() {
+      if(sliderNum>(sliderCount-1))sliderNum=0;
+      // sliderNum = sliderNum%sliderCount;
+      $("#slider-dot li").eq(sliderNum).css("background", "#fff").siblings().css("background", "none")
+      $("#slider-container").css("left", 0 - sliderNum * sliderWidth)
+    }
+
+    // setInterval(function () {
+    //   sliderNum++;
+    //   console.log(sliderNum)
+    //   if (sliderNum > (sliderCount - 1)) {
+    //     sliderNum = 0;
+    //   }
+    //   sliderGo()
+    // }, 3000)
+    //會自動撥放
+
+    var autoRun = setInterval(function () {
+      sliderNum++;
+      sliderGo()
+    }, 5000)
+
+    $(".wrapper").hover(function () {
+      clearInterval(autoRun)
+    }, function () {
+      autoRun = setInterval(function () {
+        slideNum++;
+        sliderGo()
+      }, 5000)
+    })
+
+    $(window).resize(function () {
+      sliderWidth = $(".wrapper").width();
+      $("#slider-container").css("width", slideCount*slideWidth)
+        sliderGo()
+    });
+  </script>
+
+</body>
+
+</html>
