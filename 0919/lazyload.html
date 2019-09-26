@@ -1,0 +1,29 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lazyload</title>
+    <style>
+        .full{
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <div class="full">
+            <img  class="lazyload" data-src="https://cdn.pixabay.com/photo/2019/08/28/11/46/sunset-4436556_960_720.jpg" alt="">
+    </div>
+    <div class="full">
+        <img  class="lazyload" data-src="https://cdn.pixabay.com/photo/2019/08/30/21/16/mountains-4442337_960_720.jpg" alt="">
+    </div>
+    <div class="full">
+        <img  class="lazyload" data-src="https://cdn.pixabay.com/photo/2019/09/14/12/42/icebergs-4475943_960_720.jpg" alt="">
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.js"></script>
+    <script>
+        lazyload();
+    </script>
+</body>
+</html>
